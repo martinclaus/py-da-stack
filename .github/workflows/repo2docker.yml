@@ -1,0 +1,61 @@
+name: repo2docker
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+env:
+  GITHUB_REF: ${{ github.ref }}
+  GITHUB_SHA: ${{ github.sha }}
+  IMAGE_PREFIX: martinclaus/
+
+jobs:
+  latest_image:
+    env:
+      IMAGE: py-da-stack
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Set Job Environment Variables
+        run: |
+          CALVER="$( date -u '+%Y.%m.%d' )"
+          SHA="$( git rev-parse --short ${GITHUB_SHA} )"
+          DOCKER_TAG=${CALVER}-${SHA}
+          IMAGE_SPEC="${IMAGE_PREFIX}${IMAGE}:${DOCKER_TAG}"
+          echo "::set-env name=DOCKER_TAG::${DOCKER_TAG}"
+          echo "::set-env name=IMAGE_SPEC::${IMAGE_SPEC}"
+      - name: Set Up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install repo2docker
+        run: |
+          python --version
+          pip install jupyter-repo2docker docker
+          repo2docker --version
+          docker version
+      - name: Build with repo2docker
+        run: jupyter-repo2docker --image-name ${IMAGE_SPEC} --user-id 1000 --user-name jovyan --no-run .
+      - name: Save package listing
+        run: docker run ${IMAGE_SPEC} conda list > conda-packages.txt
+      - name: Archive package listing
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{env.IMAGE}}-packages
+          path: conda-packages.txt
+      # - name: Test Image
+      #   run: |
+      #     docker run ${IMAGE_SPEC} binder/verify
+      - name: Also tag image as latest
+        run: docker tag ${IMAGE_SPEC} "${IMAGE_PREFIX}${IMAGE}:latest"
+      - name: Authenticate with DockerHub and push
+        if: github.ref == 'refs/heads/master'
+        run: |
+          echo ${{ secrets.docker_access_token }} | docker login -u ${{ secrets.docker_user_name }} --password-stdin
+          docker push ${IMAGE_SPEC}
+          docker push "${IMAGE_PREFIX}${IMAGE}:latest"

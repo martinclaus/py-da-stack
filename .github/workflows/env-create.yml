@@ -1,0 +1,24 @@
+name: env-create
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    container: docker://continuumio/miniconda3:4.8.2
+    steps:
+      - uses: actions/checkout@v1
+      - run: conda env create -n py-da-stack -f environment.yml
+      - run: conda env list
+      - run: conda list -n py-da-stack > conda-packages.txt
+      - name: Archive Conda Package List
+        uses: actions/upload-artifact@v1
+        with:
+          name: conda-packages
+          path: conda-packages.txt
