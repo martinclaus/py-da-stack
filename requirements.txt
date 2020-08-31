@@ -8,6 +8,8 @@ dask
 dask-jobqueue
 dask-labextension
 distributed
+git
+git-lfs
 gsw
 h5netcdf
 h5py
