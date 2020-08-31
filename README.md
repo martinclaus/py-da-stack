@@ -8,7 +8,9 @@ Python Data Analysis stack in a Docker container
 ## How this works
 This image is based on the latest [jupyter/base-notebook](https://hub.docker.com/r/jupyter/base-notebook) image. These images are maintained by the [Project Jupyter](https://jupyter.org) at the [docker-stacks](https://github.com/jupyter/docker-stacks) GitHub repository and ensure a recent Jupyter environment that can run Jupyter Lab or Notebook server or behind a JupyterHub.
 
-The additional packages that are installed via `conda` are specified in the file [requirements.txt].
+The additional packages that are installed via `conda` from the `conda-forge` channel are specified in the file [requirements.txt](requirements.txt).
+
+Every Sunday, 5:45 UTC, the image will be rebuild so that the package versions are kept up-to-date. To pin an envronment, you may tag the image you use for the analysis (see below). 
 
 ## How to use
 
