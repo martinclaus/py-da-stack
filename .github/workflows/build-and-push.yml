@@ -1,0 +1,25 @@
+name: build-and-push
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.docker_user_name }}
+          password: ${{ secrets.docker_access_token }}
+          repository: martinclaus/py-da-stack
+          add_git_labels: true
+          tag_with_ref: true
+          push: ${{ startsWith(github.ref, 'refs/heads/master')}}
