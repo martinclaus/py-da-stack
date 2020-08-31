@@ -6,7 +6,7 @@ ENV JUPYTER_ENABLE_LAB=true
 
 # Install from requirements.txt file with conda
 COPY requirements.txt /tmp/
-RUN conda install -c conda-forge --yes --file /tmp/requirements.txt && \
+RUN conda install -c conda-forge --yes --update-deps --file /tmp/requirements.txt && \
     # Build Jupyterlab extensions
     jupyter labextension install -y --clean --no-build jupyterlab-jupytext dask-labextension && \
     jupyter lab build && \
