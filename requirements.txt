@@ -7,10 +7,7 @@ cmaps
 dask
 dask-jobqueue
 dask-labextension
-datashader
 distributed
-geopandas
-geoviews
 gsw
 h5netcdf
 h5py
@@ -18,10 +15,7 @@ holoviews
 hvplot
 intake
 intake-xarray
-joblib
-jupyter-server-proxy
 jupytext
-lz4
 matplotlib-base
 nbval
 nbgitpuller
@@ -35,15 +29,11 @@ pandas
 panel
 papermill
 pip
-pyresample
 pytest
-python-blosc
 scipy
 seaborn
 seawater
-shapely
 xarray
 xgcm
 xhistogram
-xpublish
 zarr
