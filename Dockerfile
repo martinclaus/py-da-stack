@@ -10,6 +10,8 @@ RUN conda install -c conda-forge --yes --file /tmp/requirements.txt && \
     # Build Jupyterlab extensions
     jupyter labextension install -y --clean --no-build jupyterlab-jupytext dask-labextension && \
     jupyter lab build && \
+    # clean conda cache, index and package tarballs
+    conda clean -a && \
     # fix file permissions
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
