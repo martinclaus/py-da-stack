@@ -8,6 +8,7 @@ dask
 dask-jobqueue
 dask-labextension
 distributed
+fastparquet
 git
 git-lfs
 gsw
