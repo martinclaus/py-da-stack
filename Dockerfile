@@ -8,7 +8,8 @@ ENV JUPYTER_ENABLE_LAB=true
 COPY requirements.txt /tmp/
 RUN conda install -c conda-forge --yes --update-deps --file /tmp/requirements.txt && \
     # Build Jupyterlab extensions
-    jupyter labextension install -y --clean --no-build jupyterlab-jupytext dask-labextension && \
+    jupyter labextension install -y --clean --no-build \
+        jupyterlab-jupytext dask-labextension @pyviz/jupyterlab_pyviz && \
     jupyter lab build && \
     # clean conda cache, index and package tarballs
     conda clean -a && \
