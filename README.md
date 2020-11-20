@@ -1,7 +1,6 @@
 # py-da-stack
 
-![env-create](https://github.com/martinclaus/py-da-stack/workflows/env-create/badge.svg)
-![repo2docker](https://github.com/martinclaus/py-da-stack/workflows/repo2docker/badge.svg)
+![build and push](https://github.com/martinclaus/py-da-stack/workflows/build-and-push/badge.svg)
 
 Python Data Analysis stack in a Docker container
 
