@@ -22,7 +22,9 @@ Assuming you want to expose your work directory to `/work` in the container, the
 docker pull martinclaus/py-da-stack:latest
 docker run \
     -v ${HOME}/work/:/app -w /app \
-    -p 8888:8888 martinclaus/py-da-stack:latest
+    -p 8888:8888 \
+    --user $(id -u):$(id -g) --group-add users \
+    martinclaus/py-da-stack:latest
 ```
 If you want to run a specific version of this image, replace the tag `latest` accordingly.
 All available versions [are found on Dockerhub](https://hub.docker.com/r/martinclaus/py-da-stack/tags).
