@@ -33,6 +33,7 @@ panel
 papermill
 pip
 pytest
+python-graphviz
 scipy
 seaborn
 seawater
