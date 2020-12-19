@@ -26,6 +26,8 @@ jobs:
       -
         name: Prepare
         id: prep
+        env:
+          REGISTRY: martinclaus/py-da-stack
         run: |
           VERSION=edge
           if [[ $GITHUB_REF == refs/tags/* ]]; then
@@ -35,9 +37,9 @@ jobs:
           elif [[ $GITHUB_REF == refs/pull/* ]]; then
             VERSION=pr-${{ github.event.number }}
           fi
-          TAGS="martinclaus/py-da-stack:${VERSION}"
+          TAGS="${REGISTRY}:${VERSION}"
           if [ "${{ github.event_name }}" = "push" ]; then
-            TAGS="$TAGS,martinclaus/py-da-stack:sha-${GITHUB_SHA::8}"
+            TAGS="$TAGS,${REGISTRY}:sha-${GITHUB_SHA::8}"
           fi
           echo ::set-output name=version::${VERSION}
           echo ::set-output name=tags::${TAGS}
@@ -59,8 +61,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: martinclaus/py-da-stack:latest
-#           $${{ steps.prep.outputs.tags }}
+          tags: $${{ steps.prep.outputs.tags }}
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
