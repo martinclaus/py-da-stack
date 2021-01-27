@@ -9,7 +9,7 @@ COPY requirements.txt /tmp/
 RUN conda install -c conda-forge --yes --update-deps --file /tmp/requirements.txt && \
     # Build Jupyterlab extensions
     jupyter labextension install -y --clean --no-build \
-        jupyterlab-jupytext dask-labextension @pyviz/jupyterlab_pyviz && \
+        jupyterlab-jupytext dask-labextension && \
     jupyter lab build && \
     # clean conda cache, index and package tarballs
     conda clean -a && \
