@@ -1,6 +1,7 @@
 # py-da-stack
 
 ![build and push](https://github.com/martinclaus/py-da-stack/workflows/build-and-push/badge.svg)
+[![Binder badget](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/martinclaus/py-da-stack/master "Launch a martinclaus/py-da-stack container on mybinder.org")
 
 Python Data Analysis stack in a Docker container
 
@@ -43,7 +44,13 @@ singularity run \
 If you want to run a specific version of this image, replace the tag `latest` accordingly.
 All available versions [are found on Dockerhub](https://hub.docker.com/r/martinclaus/py-da-stack/tags).
 
-### Make you analysis reproducible
+## Run on mybinder.org
+
+To run the latest version of the image on [mybinder.org](https://mybinder.org) use the following URL
+
+https://mybinder.org/v2/gh/martinclaus/py-da-stack/master
+
+## Make you analysis reproducible
 
 To obtain a reproducible analysis, it is necessary to freeze your software environment.
 This can be achieved by tagging the image you want to use for the analysis.
