@@ -50,6 +50,9 @@ To run the latest version of the image on [mybinder.org](https://mybinder.org) u
 
 https://mybinder.org/v2/gh/martinclaus/py-da-stack/master
 
+To use this image in your own repo, copy the `binder/` folder to your repo and change the binder
+URL accordingly.
+
 ## Make you analysis reproducible
 
 To obtain a reproducible analysis, it is necessary to freeze your software environment.
