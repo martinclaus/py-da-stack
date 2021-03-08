@@ -17,4 +17,4 @@ RUN conda install -c conda-forge --yes --update-deps --file /tmp/requirements.tx
     echo "c.ExtensionApp.open_browser = False" >> /etc/jupyter/jupyter_server_config.py && \
     # fix file permissions
     fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+    fix-permissions $HOME

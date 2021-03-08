@@ -4,11 +4,16 @@ on:
   pull_request:
     branches:
       - master
+    paths-ignore:
+      - '*.md'
+      - 'binder/**'
+      - 'LICENSE'
   push:
     branches:
       - master
     paths-ignore:
-      - 'README.md'
+      - '*.md'
+      - 'binder/**'
       - 'LICENSE'
   schedule:
     - cron: '45 5 * * 0'
