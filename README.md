@@ -22,7 +22,7 @@ Assuming you want to expose your work directory to `/work` in the container, the
 ```shell
 docker pull martinclaus/py-da-stack:latest
 docker run \
-    -v ${HOME}/work/:/app -w /app \
+    -v ${HOME}/work/:/work -w /work \
     -p 8888:8888 \
     --user $(id -u):$(id -g) --group-add users \
     martinclaus/py-da-stack:latest
