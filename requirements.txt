@@ -20,6 +20,7 @@ intake
 intake-xarray
 jupytext
 matplotlib-base
+nbclassic>=0.2.8  # See https://github.com/jupyterlab/jupyterlab/issues/10228
 nbval
 nbgitpuller
 netcdf4
