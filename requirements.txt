@@ -18,6 +18,7 @@ holoviews
 hvplot
 intake
 intake-xarray
+ipykernel>=6
 jupytext
 matplotlib-base
 nbclassic>=0.2.8  # See https://github.com/jupyterlab/jupyterlab/issues/10228
