@@ -1,7 +1,7 @@
 # py-da-stack
 
 ![build and push](https://github.com/martinclaus/py-da-stack/workflows/build-and-push/badge.svg)
-[![Binder badget](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/martinclaus/py-da-stack/master "Launch a martinclaus/py-da-stack container on mybinder.org")
+[![Binder badget](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/martinclaus/py-da-stack/master?urlpath=lab "Launch a martinclaus/py-da-stack container on mybinder.org")
 
 Python Data Analysis stack in a Docker container
 
